@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  
+  <ItemGroup>
+    <None Remove="Security\" />
+    <None Remove="Security\Security_Model\" />
+    <None Remove="Security\Security_Interface\" />
+    <None Remove="Security\Security_Repository\" />
+    <None Remove="Utilities\" />
+    <None Remove="Dapper" />
+    <None Remove="System.Data.SqlClient" />
+    <None Remove="Views\User\" />
+    <None Remove="Swashbuckle" />
+    <None Remove="Swashbuckle.AspNetCore.Swagger" />
+    <None Remove="Views\Login\" />
+    <None Remove="SQL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Security\" />
+    <Folder Include="Security\Security_Model\" />
+    <Folder Include="Security\Security_Interface\" />
+    <Folder Include="Security\Security_Repository\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="SQL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.0.0" />
+  </ItemGroup>
+  
+</Project>

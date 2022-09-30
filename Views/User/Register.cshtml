@@ -1,0 +1,104 @@
+﻿
+@{
+
+    ViewData["Title"] = "User Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form id="login-form" class="form">
+                        <h3 class="text-center text-info">User Registration</h3>
+                        <div class="form-group">
+                            <label for="username">UserName <span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" id="username" data-bind="value: UserName" placeholder="Enter Username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span class="mandatory">*</span></label>
+                            <input type="Email" class="form-control" id="email" data-bind="value: Email" placeholder="Enter email" name="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNo">Mobile Number <span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" id="phoneNo" data-bind="value: PhoneNo" placeholder="Enter Mobile Number"
+                                   maxlength="10" name="phoneNo" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) '>
+                        </div>
+                        <div class="form-group">
+                            <label for="gendeer">Gender <span class="mandatory">*</span></label>
+
+                            <br />
+                            <div class="form-check-inline">
+                                <label class="form-check-label" for="radio1">
+                                    <input type="radio" class="form-check-input" data-bind="checked:Gender" id="radio1" name="optradio" value="1" checked>Male
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label" for="radio2">
+                                    <input type="radio" class="form-check-input" data-bind="checked:Gender" id="radio2" name="optradio" value="2">Female
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age <span class="mandatory">*</span></label>
+                            <input type="number" class="form-control" id="age" data-bind="value: Age" placeholder="Select Age" name="age">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pwd">Password <span class="mandatory">*</span></label>
+                            <input type="password" class="form-control" id="pwd" data-bind="value: Password" placeholder="Enter password" name="pswd">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pwd">Confirm Password <span class="mandatory">*</span></label>
+                            <input type="password" class="form-control" id="confirmpwd" data-bind="value: ConfirmPassword" placeholder="Confirm password" name="confirmpswd">
+                        </div>
+                      
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" data-bind="click: Register">Register</button>
+                            <a href="/Login/Index" class="text-info text-right" style="margin-left:250px">Back To Login</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/Scripts/UserRegister.js?v=0.1"></script>
+
+<style>
+    .mandatory {
+        color: red;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #17a2b8;
+        height: 100vh;
+    }
+
+    #login .container #login-row #login-column #login-box {
+        margin-top: 120px;
+        max-width: 600px;
+        height: 700px;
+        border: 1px solid #9C9C9C;
+        background-color: #EAEAEA;
+    }
+
+        #login .container #login-row #login-column #login-box #login-form {
+            padding: 20px;
+        }
+
+            #login .container #login-row #login-column #login-box #login-form #register-link {
+                margin-top: -85px;
+            }
+</style>

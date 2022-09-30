@@ -1,0 +1,80 @@
+﻿<style>
+    .textColor {
+        color: white;
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - User  Portal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/toastr/toastr.css" rel="stylesheet" />
+    <link href="../../css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <header style="background-color:cornflowerblue">
+
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+            <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+                <h3 class="textColor">User  Portal</h3>
+            </button>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false" style="color:wheat">
+                        Dear - @User.Identity.Name
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="@Url.Action("Logout", "Login")">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - User  Portal
+        </div>
+    </footer>
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/knockout/knockout-latest.js"></script>
+    <script src="~/knockout/knockout.validation.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js" type="text/javascript"></script>
+    <script src="~/lib/jquery/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/dataTables.responsive.min.js"></script>
+    <script src="~/js/responsive.bootstrap4.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
