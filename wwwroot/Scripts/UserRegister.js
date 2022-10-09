@@ -1,22 +1,7 @@
 ﻿
-function RegisterData(data) {
-    var self = this;
-    if (data != undefined) {
-        self.Id = ko.observable(data.Id);
-        self.UserName = ko.observable(data.UserName);
-        self.Email = ko.observable(data.Email);
-        self.Password = ko.observable(data.Password);
-        self.PhoneNo = ko.observable(data.PhoneNo);
-        self.Gender = ko.observable(data.Gender);
-        self.Age = ko.observable(data.Age);
-       
-
-    }
-}
-
-
 var UserRegisterViewModel = function () {
     var self = this;
+    //Create observable to bind value 
     self.UserName = ko.observable('');
     self.Email = ko.observable('');
     self.Password = ko.observable('');
@@ -25,7 +10,7 @@ var UserRegisterViewModel = function () {
     self.Gender = ko.observable('');
     self.Age = ko.observable('');
 
-
+    //Validation of user register 
     self.Validation = function () {
         var errMsg = "";
         if (ko.toJS(self.UserName()) == undefined || self.UserName() == '') {
@@ -46,7 +31,7 @@ var UserRegisterViewModel = function () {
         }
 
         if (ko.toJS(self.Password()) == undefined || self.Password() == '') {
-            errMsg += "Enter Password<br/>";
+            errMsg += "Enter Password !!!<br/>";
         }
 
         if (ko.toJS(self.ConfirmPassword() == undefined || self.ConfirmPassword() == '')) {
@@ -68,6 +53,7 @@ var UserRegisterViewModel = function () {
 
     }
 
+    //Register function 
     self.Register = function () {
         if (!self.Validation()) return;
         var RegisterDetail = {
@@ -81,7 +67,7 @@ var UserRegisterViewModel = function () {
         console.log(RegisterDetail);
         var url = '/User/SaveRegister';
         var data = { userRegister: RegisterDetail };
-        $.post(url, data, function (res, status, xhr) {
+        $.post(url, data, function (res) {
 
             console.log(res);
             var obj = res;
@@ -93,12 +79,14 @@ var UserRegisterViewModel = function () {
 
             }
             else {
-                self.ClearControls();
-                alert('error', "Not Responding Please Try Later");
-                self.ClearControls();
+                if (obj.errorList != null) {
+                    // toastr.error(obj.errorList);
+                    obj.errorList.forEach(element => toastr.error(element));
+                } else {
+                    toastr.error(obj.message);
+                }
+               
             }
-        }).fail((xhr, status, message) => {
-            jAlert(status, message);
         });
     }
 
@@ -113,7 +101,8 @@ var UserRegisterViewModel = function () {
     }
 }
 
-
+//Start JQuery function
 $(document).ready(function () {
+    //binding viewmodel in knockout js
     ko.applyBindings(new UserRegisterViewModel());
 });

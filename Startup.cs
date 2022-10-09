@@ -23,13 +23,15 @@ namespace UserRegistrationTask
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            // To Configure database connection
             services.Configure<ReadConfig>(Configuration.GetSection("ConnectionStrings"));
-
+            //Register services
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<ILoginUser, LoginRepo>();
             services.AddSingleton<ILoggedinUser, LoggedinUser>();
             services.AddSingleton<IUserRegister, UserRegisterRepo>();
 
+            //set default cookie
             services.AddAuthentication("UserRegistrationCookies")
              .AddCookie("UserRegistrationCookies", config =>
              {
